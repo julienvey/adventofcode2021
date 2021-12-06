@@ -12,7 +12,7 @@ import (
 
 func main() {
 	input := readInput("day5/input.txt")
-	fmt.Printf("Solution Day 5, Part 1: %d\n", SolvePuzzlePart1(input)) // 5145
+	fmt.Printf("Solution Day 5, Part 1: %d\n", SolvePuzzlePart1(input))
 	fmt.Printf("Solution Day 5, Part 2: %d\n", SolvePuzzlePart2(input))
 }
 
