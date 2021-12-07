@@ -2,35 +2,13 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
-	"strconv"
-	"strings"
+	"github.com/julienvey/adventofcode2021/utils"
 )
 
 func main() {
-	input := readInput("day6/input.txt")
+	input := utils.ReadInput("day6/input.txt")
 	fmt.Printf("Solution Day 6, Part 1: %d\n", getGrowth(input, 80))
 	fmt.Printf("Solution Day 6, Part 2: %d\n", getGrowth(input, 256))
-}
-
-func readInput(in string) []int {
-	file, err := ioutil.ReadFile(in)
-	if err != nil {
-		log.Fatal(err)
-	}
-	var input []int
-	for _, line := range strings.Split(string(file), ",") {
-		if line == "" {
-			continue
-		}
-		inputInt, err := strconv.Atoi(strings.TrimSpace(line))
-		if err != nil {
-			log.Fatal(err)
-		}
-		input = append(input, inputInt)
-	}
-	return input
 }
 
 func getGrowth(input []int, days int) int {

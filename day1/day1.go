@@ -2,35 +2,13 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
-	"strconv"
-	"strings"
+	"github.com/julienvey/adventofcode2021/utils"
 )
 
 func main() {
-	input := readInput()
+	input := utils.ReadInput("day1/input.txt")
 	fmt.Printf("Solution Day 1, Part 1: %d\n", SolvePuzzlePart1(input))
 	fmt.Printf("Solution Day 1, Part 2: %d\n", SolvePuzzlePart2(input))
-}
-
-func readInput() []int {
-	file, err := ioutil.ReadFile("day1/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	var input []int
-	for _, line := range strings.Split(string(file), "\n") {
-		if line == "" {
-			continue
-		}
-		inputInt, err := strconv.Atoi(line)
-		if err != nil {
-			log.Fatal(err)
-		}
-		input = append(input, inputInt)
-	}
-	return input
 }
 
 func SolvePuzzlePart2(input []int) int {
