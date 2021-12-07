@@ -11,6 +11,11 @@ func TestSolvePuzzlePart1(t *testing.T) {
 	assert.Equal(t, 37, SolvePuzzlePart1(input))
 }
 
+func TestSolvePuzzlePart2(t *testing.T) {
+	input := utils.ReadInput("fixtures/input.txt")
+	assert.Equal(t, 168, SolvePuzzlePart2(input))
+}
+
 func TestCalcMedian(t *testing.T) {
 	assert.Equal(t, 2, CalcMedian(16, 1, 2, 0, 4, 2, 7, 1, 2, 14))
 	assert.Equal(t, 3, CalcMedian(16, 1, 2, 0, 4, 2, 7, 1, 2, 14, 18, 3, 4, 45, 21, 1, 0, 3, 4, 5))
