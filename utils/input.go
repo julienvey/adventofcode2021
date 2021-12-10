@@ -25,3 +25,18 @@ func ReadInput(in string) []int {
 	}
 	return input
 }
+
+func ReadInputString(in string) []string {
+	file, err := ioutil.ReadFile(in)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var input []string
+	for _, line := range strings.Split(string(file), "\n") {
+		if line == "" {
+			continue
+		}
+		input = append(input, line)
+	}
+	return input
+}
