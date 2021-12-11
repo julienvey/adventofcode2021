@@ -7,6 +7,8 @@ import (
 func main() {
 	input := readInput("day11/input.txt")
 	fmt.Printf("Solution Day 11, Part 1: %d\n", SolvePuzzlePart1(input))
+	input = readInput("day11/input.txt")
+	fmt.Printf("Solution Day 11, Part 2: %d\n", SolvePuzzlePart2(input))
 }
 
 func SolvePuzzlePart1(input [][]int) int {
@@ -25,6 +27,28 @@ func SolvePuzzlePart1(input [][]int) int {
 		}
 	}
 	return sumFlashes
+}
+
+func SolvePuzzlePart2(input [][]int) int {
+	step := 0
+	for {
+		step++
+		for x := 0; x < 10; x++ {
+			for y := 0; y < 10; y++ {
+				input[x][y] += 1
+			}
+		}
+
+		var stepFlashes int
+		for x := 0; x < 10; x++ {
+			for y := 0; y < 10; y++ {
+				stepFlashes += flashes(&input, x, y)
+			}
+		}
+		if stepFlashes == 100 {
+			return step
+		}
+	}
 }
 
 func flashes(input *[][]int, x int, y int) int {
