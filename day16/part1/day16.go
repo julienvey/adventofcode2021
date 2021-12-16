@@ -10,11 +10,6 @@ func main() {
 	input := readInput("day16/input.txt")
 	fmt.Printf("Solution Day 16, Part 1: %d\n", SolvePuzzlePart1(input))
 }
-
-func SolvePuzzlePart2(input string) int {
-	return 0
-}
-
 func SolvePuzzlePart1(input string) int {
 	bin := hex2Bin(input)
 
