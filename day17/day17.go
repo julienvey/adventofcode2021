@@ -7,15 +7,16 @@ import (
 )
 
 func main() {
-	part1 := SolvePuzzle("target area: x=81..129, y=-150..-108")
+	part1, part2 := SolvePuzzle("target area: x=81..129, y=-150..-108")
 	fmt.Printf("Solution Day 17, Part 1: %d\n", part1)
+	fmt.Printf("Solution Day 17, Part 2: %d\n", part2)
 }
 
 type Target struct {
 	xMin, xMax, yMin, yMax int
 }
 
-func SolvePuzzle(input string) int {
+func SolvePuzzle(input string) (int, int) {
 	fmt.Println(input)
 	rex := regexp.MustCompile(`^target area: x=([-0-9]+)\.\.([-0-9]+), y=([-0-9]+)\.\.([-0-9]+)$`)
 	res := rex.FindAllStringSubmatch(input, -1)[0]
@@ -30,7 +31,7 @@ func SolvePuzzle(input string) int {
 	fmt.Println(possiblesX)
 
 	// Je teste tous les X possible
-	var globalMaxHeight int
+	var globalMaxHeight, distincts int
 	for _, possibleX := range possiblesX {
 		fmt.Printf("Testing x: %d\n", possibleX)
 		possibleY := target.yMin - 1
@@ -50,6 +51,7 @@ func SolvePuzzle(input string) int {
 					if yPos > maxHeight {
 						maxHeight = yPos
 					}
+					distincts++
 					break
 				}
 				if missedTarget(target, xPos, yPos) {
@@ -72,7 +74,7 @@ func SolvePuzzle(input string) int {
 			}
 		}
 	}
-	return globalMaxHeight
+	return globalMaxHeight, distincts
 }
 
 func inTarget(target Target, x, y int) bool {
