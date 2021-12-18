@@ -6,5 +6,7 @@ import (
 )
 
 func TestSolvePuzzlePart1(t *testing.T) {
-	assert.Equal(t, 45, SolvePuzzle("target area: x=20..30, y=-10..-5"))
+	part1, part2 := SolvePuzzle("target area: x=20..30, y=-10..-5")
+	assert.Equal(t, 45, part1)
+	assert.Equal(t, 112, part2)
 }
